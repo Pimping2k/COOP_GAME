@@ -73,11 +73,13 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+    <Compile Include="Assets\Scripts\Relay\RelayManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\MovementComponent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\UI\ButtonManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -358,20 +360,20 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.33f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.33f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -751,6 +753,9 @@
     <Reference Include="Unity.Burst.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSolutionInterface.dll</HintPath>
     </Reference>
@@ -777,6 +782,12 @@
     </Reference>
     <Reference Include="Unity.Netcode.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Netcode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Relay">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Relay.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStats">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStats.dll</HintPath>
@@ -811,6 +822,9 @@
     <Reference Include="Unity.Multiplayer.Tools.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.Common">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.Common.dll</HintPath>
     </Reference>
@@ -841,14 +855,17 @@
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.QoS">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.QoS.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Runtime">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Editor.dll</HintPath>
@@ -877,17 +894,20 @@
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.Authentication">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Authentication.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.MetricTypes">
-      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricTypes.dll</HintPath>
+    <Reference Include="Unity.Networking.Editor">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Networking.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Networking.Editor">
-      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Networking.Editor.dll</HintPath>
+    <Reference Include="Unity.Multiplayer.Tools.MetricTypes">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricTypes.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
@@ -926,6 +946,10 @@
     <ProjectReference Include="QFSW.QC.Editor.csproj">
       <Project>{834abd09-7e43-c899-c86e-d0c9d79ad743}</Project>
       <Name>QFSW.QC.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleRelay.csproj">
+      <Project>{cc038424-9ae2-fc42-7ec7-762c9b72adcb}</Project>
+      <Name>SimpleRelay</Name>
     </ProjectReference>
     <ProjectReference Include="QFSW.QC.Serializers.csproj">
       <Project>{898ac6f7-108e-20e5-d7a9-fac4ba01ba06}</Project>

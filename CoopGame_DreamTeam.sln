@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Grammar", "QFSW.QC.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Editor.Tools", "QFSW.QC.Editor.Tools.csproj", "{e8d210c4-f810-1743-e1be-9711759d86d7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleRelay", "SimpleRelay.csproj", "{cc038424-9ae2-fc42-7ec7-762c9b72adcb}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,8 @@ Global
 		{035c75ee-094b-1706-ea66-5a432e16ac93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e8d210c4-f810-1743-e1be-9711759d86d7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{e8d210c4-f810-1743-e1be-9711759d86d7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{cc038424-9ae2-fc42-7ec7-762c9b72adcb}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{cc038424-9ae2-fc42-7ec7-762c9b72adcb}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
