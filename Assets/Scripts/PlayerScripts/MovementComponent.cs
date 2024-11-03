@@ -1,14 +1,15 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 
-public class MovementComponent : MonoBehaviour
+public class MovementComponent : NetworkBehaviour
 {
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
 
-    [SerializeField]private bool groundedPlayer;
+    private bool groundedPlayer;
     private Vector3 playerVelocity;
     private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
@@ -24,6 +25,10 @@ public class MovementComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!IsOwner) return;
+
+        Debug.Log("Movement update for owner: " + NetworkManager.Singleton.LocalClientId);
+        
         CheckGrounded();
         ApplyMovement();
         ApplyGravityAndJump();
@@ -31,7 +36,6 @@ public class MovementComponent : MonoBehaviour
 
     private void CheckGrounded()
     {
-        //groundedPlayer = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

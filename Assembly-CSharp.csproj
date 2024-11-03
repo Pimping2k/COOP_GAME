@@ -60,6 +60,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\BasicMovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
@@ -777,6 +778,9 @@
     <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Configuration">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="ParrelSync">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\ParrelSync.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
@@ -807,11 +811,23 @@
     <Reference Include="Unity.Netcode.Editor.PackageChecker">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Netcode.Editor.PackageChecker.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Multiplayer.Samples.Utilities.RNSM">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Samples.Utilities.RNSM.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.MetricTestData">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricTestData.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Tutorials.Core.Editor">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Tutorials.Core.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Samples.Utilities">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Samples.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkProfiler.Editor.dll</HintPath>
@@ -822,17 +838,20 @@
     <Reference Include="Unity.Multiplayer.Tools.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Services.Core.Analytics">
-      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.Common">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Tools.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Profiling.Core">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.007">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.007.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.007">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.007.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
@@ -840,11 +859,17 @@
     <Reference Include="Unity.Burst">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Multiplayer.Samples.Utilities.ClientAuthority">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Multiplayer.Samples.Utilities.ClientAuthority.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tutorials.Core">
+      <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.Tutorials.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>C:\Users\auagf\CoopGame_DreamTeam\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
