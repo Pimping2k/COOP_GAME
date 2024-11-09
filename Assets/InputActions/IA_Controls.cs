@@ -37,8 +37,8 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""CameraLook"",
-                    ""type"": ""Value"",
+                    ""name"": ""Camera"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""db30187e-422c-4617-a30e-b2b3e07ae0dc"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -61,13 +61,68 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4b451403-0c69-4492-948a-337ea91ec224"",
-                    ""path"": ""<Mouse>/Delta"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraLook"",
+                    ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""RightStick"",
+                    ""id"": ""a6767da2-9d9d-4fcc-adad-976fa740776d"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""36b82eae-157e-4478-810c-b3e964f92ae8"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""09381054-cfd5-4702-a352-8979cbd76011"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a75153e8-3c63-47d1-ab13-c0c5dd6a259d"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""64b87ac1-963c-46f1-9b8b-a6926f58ced8"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -83,7 +138,7 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
         // PlayerControl
         m_PlayerControl = asset.FindActionMap("PlayerControl", throwIfNotFound: true);
         m_PlayerControl_Sprint = m_PlayerControl.FindAction("Sprint", throwIfNotFound: true);
-        m_PlayerControl_CameraLook = m_PlayerControl.FindAction("CameraLook", throwIfNotFound: true);
+        m_PlayerControl_Camera = m_PlayerControl.FindAction("Camera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -146,13 +201,13 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerControl;
     private List<IPlayerControlActions> m_PlayerControlActionsCallbackInterfaces = new List<IPlayerControlActions>();
     private readonly InputAction m_PlayerControl_Sprint;
-    private readonly InputAction m_PlayerControl_CameraLook;
+    private readonly InputAction m_PlayerControl_Camera;
     public struct PlayerControlActions
     {
         private @IA_Controls m_Wrapper;
         public PlayerControlActions(@IA_Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Sprint => m_Wrapper.m_PlayerControl_Sprint;
-        public InputAction @CameraLook => m_Wrapper.m_PlayerControl_CameraLook;
+        public InputAction @Camera => m_Wrapper.m_PlayerControl_Camera;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -165,9 +220,9 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @CameraLook.started += instance.OnCameraLook;
-            @CameraLook.performed += instance.OnCameraLook;
-            @CameraLook.canceled += instance.OnCameraLook;
+            @Camera.started += instance.OnCamera;
+            @Camera.performed += instance.OnCamera;
+            @Camera.canceled += instance.OnCamera;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -175,9 +230,9 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @CameraLook.started -= instance.OnCameraLook;
-            @CameraLook.performed -= instance.OnCameraLook;
-            @CameraLook.canceled -= instance.OnCameraLook;
+            @Camera.started -= instance.OnCamera;
+            @Camera.performed -= instance.OnCamera;
+            @Camera.canceled -= instance.OnCamera;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -207,6 +262,6 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
     public interface IPlayerControlActions
     {
         void OnSprint(InputAction.CallbackContext context);
-        void OnCameraLook(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
     }
 }

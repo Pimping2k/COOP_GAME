@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerCamera : NetworkBehaviour
 {
-    [SerializeField] private Camera _camera;
+    [SerializeField] private GameObject _camera;
     void Start()
     {
         if (IsLocalPlayer)
