@@ -1,19 +1,20 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] private Button hostButton;
-    [SerializeField] private Button connectClient;
+    [SerializeField] private Button connectClientButton;
     [SerializeField] private TMP_InputField joinCodeInputField;
     [SerializeField] private TextMeshProUGUI joinCodeText;
 
     private void Start()
     {
         hostButton.onClick.AddListener(CreateHost);
-        connectClient.onClick.AddListener(ConnectClient);
+        connectClientButton.onClick.AddListener(ConnectClient);
     }
 
     private void Awake()
@@ -30,6 +31,10 @@ public class ButtonManager : MonoBehaviour
             Debug.Log("Session is created. Join Code: " + joinCode);
             joinCodeText.text = joinCode;
             joinCodeInputField.text = joinCode;
+
+            connectClientButton.interactable = false;
+
+            LobbyManager.Instance.OnHostCreated();
         }
     }
 
@@ -41,6 +46,7 @@ public class ButtonManager : MonoBehaviour
         {
             await RelayManager.Instance.JoinRelay(joinCode);
             Debug.Log("Connection is finished!");
+            LobbyManager.Instance.OnClientConnected();
         }
         else
         {

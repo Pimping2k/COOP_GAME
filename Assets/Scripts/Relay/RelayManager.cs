@@ -61,6 +61,7 @@ public class RelayManager : MonoBehaviour
 
             NetworkManager.Singleton.StartHost();
             Debug.Log($"Relay is created. join code - {joinCode}".ColorText(Color.green));
+            
             return joinCode;
         }
         catch (RelayServiceException e)
