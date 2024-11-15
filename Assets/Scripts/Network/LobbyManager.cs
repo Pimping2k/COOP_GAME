@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -8,8 +6,21 @@ public class LobbyManager : NetworkBehaviour
 {
     [SerializeField] private List<Transform> playerSpawnPointParent;
     [SerializeField] private GameObject playerModelPrefab;
+    [SerializeField] private List<MeshFilter> availableMeshes;
 
-    private List<GameObject> spawnedModels = new List<GameObject>();
+    public List<MeshFilter> AvailableMeshes
+    {
+        get => availableMeshes;
+        set => availableMeshes = value;
+    }
+
+    public GameObject PlayerModelPrefab
+    {
+        get => playerModelPrefab;
+        set => playerModelPrefab = value;
+    }
+
+    public Dictionary<ulong, GameObject> InstanceList { get; } = new Dictionary<ulong, GameObject>();
 
     public static LobbyManager Instance;
 
@@ -26,24 +37,16 @@ public class LobbyManager : NetworkBehaviour
         }
     }
 
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-        NetworkManager.Singleton.OnClientConnectedCallback += OnPlayerConnected;
+        if (IsServer)
+        {
+            NetworkManager.Singleton.OnClientConnectedCallback += OnPlayerConnected;
+            SpawnPlayerModelOnPedestal(NetworkManager.Singleton.LocalClientId, 0);
+        }
     }
 
     public void OnHostCreated()
-    {
-        SpawnPlayerModelOnPedestal(NetworkManager.Singleton.LocalClientId, 0);
-        NetworkManager.Singleton.OnClientConnectedCallback += OnPlayerConnected;
-    }
-
-    public void OnClientConnected()
-    {
-        OnPlayerConnected(NetworkManager.Singleton.LocalClientId);
-        NetworkManager.Singleton.OnClientConnectedCallback += OnPlayerConnected;
-    }
-
-    public override void OnNetworkSpawn()
     {
         if (IsServer)
         {
@@ -51,16 +54,19 @@ public class LobbyManager : NetworkBehaviour
         }
     }
 
-    private void OnPlayerConnected(ulong clientId)
+    public void OnPlayerConnected(ulong clientId)
     {
-        if (!IsServer)
-            return;
+        if (!IsServer) return;
 
-        int pedestalIndex = spawnedModels.Count;
+        int pedestalIndex = InstanceList.Count;
 
         if (pedestalIndex < playerSpawnPointParent.Count)
         {
             SpawnPlayerModelOnPedestal(clientId, pedestalIndex);
+        }
+        else
+        {
+            Debug.LogError("Нет доступных пьедесталов для спавна нового игрока.");
         }
     }
 
@@ -68,19 +74,25 @@ public class LobbyManager : NetworkBehaviour
     {
         Transform spawnPoint = playerSpawnPointParent[pedestalIndex];
 
-        if (spawnedModels.Exists(m => m.GetComponent<NetworkObject>().OwnerClientId == clientId))
+        if (InstanceList.ContainsKey(clientId))
             return;
 
         GameObject modelInstance = Instantiate(playerModelPrefab, spawnPoint.position, spawnPoint.rotation);
-        modelInstance.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
 
-        spawnedModels.Add(modelInstance);
+        InstanceList[clientId] = modelInstance;
+
+        NetworkObject networkObject = modelInstance.GetComponent<NetworkObject>();
+        networkObject.SpawnWithOwnership(clientId);
+
+        Debug.Log($"Игрок с clientId {clientId} спавнен на пьедестале {pedestalIndex}.");
     }
 
     public override void OnDestroy()
     {
         base.OnDestroy();
         if (NetworkManager.Singleton != null)
+        {
             NetworkManager.Singleton.OnClientConnectedCallback -= OnPlayerConnected;
+        }
     }
 }

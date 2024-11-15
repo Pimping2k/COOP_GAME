@@ -25,6 +25,11 @@ public class RelayManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    private async void Start()
+    {
+        await InitializeUnityServiceAndSignIn();
+    }
 
     private async Task InitializeUnityServiceAndSignIn()
     {

@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject playerPrefab;
 
-    // Update is called once per frame
-    void Update()
+    private MeshFilter playerPrefabMeshFilter;
+
+    private void Start()
     {
-        
+        playerPrefabMeshFilter = playerPrefab.GetComponent<MeshFilter>();
     }
+    
+    
 }
