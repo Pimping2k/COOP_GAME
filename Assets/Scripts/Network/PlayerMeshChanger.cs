@@ -5,7 +5,7 @@ public class PlayerMeshChanger : NetworkBehaviour
 {
     private MeshFilter playerMeshFilter;
 
-    private void Start()
+    private void Awake()
     {
         playerMeshFilter = GetComponent<MeshFilter>();
         NetworkObject networkObject = GetComponent<NetworkObject>();

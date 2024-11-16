@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameManager : NetworkBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
-
+    [SerializeField] private GameObject playerModelPrefab;
+    
     private MeshFilter playerPrefabMeshFilter;
 
     private void Start()
