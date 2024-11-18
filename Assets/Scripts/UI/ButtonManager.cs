@@ -2,6 +2,7 @@ using System.Linq;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private Button spawnPlayerButton;
     [SerializeField] private Button nextMeshButton;
     [SerializeField] private Button previousMeshButton;
+    [SerializeField] private Button startGameButton;
     [SerializeField] private TMP_InputField joinCodeInputField;
     [SerializeField] private TextMeshProUGUI joinCodeText;
 
@@ -23,6 +25,7 @@ public class ButtonManager : MonoBehaviour
         connectClientButton.onClick.AddListener(ConnectClient);
         nextMeshButton.onClick.AddListener(NextMesh);
         previousMeshButton.onClick.AddListener(PreviousMesh);
+        startGameButton.onClick.AddListener(OnStartGame);
     }
 
     private void Awake()
@@ -45,7 +48,7 @@ public class ButtonManager : MonoBehaviour
             LobbyManager.Instance.OnHostCreated();
         }
     }
-
+    
     private async void ConnectClient()
     {
         string joinCode = joinCodeInputField.text;
@@ -63,6 +66,11 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    private void OnStartGame()
+    {
+        GameManager.Instance.GameStart();
+    }
+    
     private void NextMesh()
     {
         ChangeMesh(1);
