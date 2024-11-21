@@ -1,29 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class LobbyManager : NetworkBehaviour
 {
-    [SerializeField] private List<Transform> playerSpawnPointParent;
-    [SerializeField] private GameObject playerModelPrefab;
-    [SerializeField] private List<MeshFilter> availableMeshes;
-
-    public List<MeshFilter> AvailableMeshes
-    {
-        get => availableMeshes;
-        set => availableMeshes = value;
-    }
-
-    public GameObject PlayerModelPrefab
-    {
-        get => playerModelPrefab;
-        set => playerModelPrefab = value;
-    }
-
-    public Dictionary<ulong, GameObject> InstanceList { get; } = new Dictionary<ulong, GameObject>();
-
+    [SerializeField] private List<GameObject> LobbyPlayers;
     public static LobbyManager Instance;
 
     private void Awake()
@@ -44,7 +25,6 @@ public class LobbyManager : NetworkBehaviour
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientConnectedCallback += OnPlayerConnected;
-            SpawnPlayerModelOnPedestal(NetworkManager.Singleton.LocalClientId, 0);
         }
     }
 
@@ -52,42 +32,38 @@ public class LobbyManager : NetworkBehaviour
     {
         if (IsServer)
         {
-            SpawnPlayerModelOnPedestal(NetworkManager.Singleton.LocalClientId, 0);
+            ShowPlayersPrefabServerRpc();
         }
     }
 
     public void OnPlayerConnected(ulong clientId)
     {
-        if (!IsServer) return;
-
-        int pedestalIndex = InstanceList.Count;
-
-        if (pedestalIndex < playerSpawnPointParent.Count)
+        if (IsServer)
         {
-            SpawnPlayerModelOnPedestal(clientId, pedestalIndex);
-        }
-        else
-        {
-            Debug.LogError("Нет доступных пьедесталов для спавна нового игрока.");
+            ShowPlayersPrefabServerRpc();
         }
     }
 
-    private void SpawnPlayerModelOnPedestal(ulong clientId, int pedestalIndex)
+    [ServerRpc(RequireOwnership = false)]
+    private void ShowPlayersPrefabServerRpc()
     {
-        Transform spawnPoint = playerSpawnPointParent[pedestalIndex];
-
-        if (InstanceList.ContainsKey(clientId))
+        if (!IsServer)
             return;
-
-        GameObject modelInstance = Instantiate(playerModelPrefab, spawnPoint.position, spawnPoint.rotation);
-
-        InstanceList[clientId] = modelInstance;
-
-        NetworkObject networkObject = modelInstance.GetComponent<NetworkObject>();
-        networkObject.SpawnWithOwnership(clientId);
-
-        Debug.Log($"Игрок с clientId {clientId} спавнен на пьедестале {pedestalIndex}.");
+        int connectedClientsCount = NetworkManager.Singleton.ConnectedClients.Count;
+        UpdateLobbyPlayersPrefabClientRpc(connectedClientsCount);
     }
+
+    [ClientRpc]
+    private void UpdateLobbyPlayersPrefabClientRpc(int connectedPlayersCount)
+    {
+        if (!IsClient)
+            return;
+        for (int i = 0; i < LobbyPlayers.Count; i++)
+        {
+            LobbyPlayers[i].SetActive(i < connectedPlayersCount);
+        }
+    }
+
 
     public override void OnDestroy()
     {
