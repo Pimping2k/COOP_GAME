@@ -36,25 +36,7 @@ public class GameManager : NetworkBehaviour
     {
         if (IsServer)
         {
-            //SpawnPlayers();
             NetworkManager.SceneManager.OnLoadComplete -= OnSceneLoadComplete;
         }
     }
-
-    // private void SpawnPlayers()
-    // {
-    //     foreach (var client in NetworkManager.ConnectedClientsList)
-    //     {
-    //         var playerInstance = Instantiate(playerPrefab);
-    //         var playerNetworkObject = playerInstance.GetComponent<NetworkObject>();
-    //
-    //         if (LobbyManager.Instance.InstanceList.TryGetValue(client.ClientId, out var lobbyPlayer))
-    //         {
-    //             var playerMesh = playerInstance.GetComponent<MeshFilter>();
-    //             playerMesh.sharedMesh = lobbyPlayer.GetComponent<MeshFilter>().sharedMesh;
-    //         }
-    //
-    //         playerNetworkObject.SpawnAsPlayerObject(client.ClientId);
-    //     }
-    // }
 }
