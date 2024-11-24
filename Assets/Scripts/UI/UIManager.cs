@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         hostButton.onClick.AddListener(CreateHost);
         connectClientButton.onClick.AddListener(ConnectClient);
         startGameButton.onClick.AddListener(OnStartGame);
+
     }
 
     private void Awake()
