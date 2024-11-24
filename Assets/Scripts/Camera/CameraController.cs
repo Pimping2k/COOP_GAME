@@ -1,10 +1,7 @@
-using System;
-using Unity.Mathematics;
+using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XInput;
 
-public class CameraController : MonoBehaviour
+public class CameraController : NetworkBehaviour
 {
     [SerializeField] private float sensitivity = 1f;
     [SerializeField] private Transform targetTransform;
@@ -51,9 +48,12 @@ public class CameraController : MonoBehaviour
         Vector3 forwardDirection = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
         targetTransform.rotation = Quaternion.Slerp(targetTransform.rotation, Quaternion.LookRotation(forwardDirection), Time.deltaTime);
     }
-
+    
     private void LateUpdate()
     {
+        if(!IsOwner)
+            return;
+        
         RotateCamera();
     }
 }

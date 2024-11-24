@@ -52,7 +52,8 @@ public class BasicMovement : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwner) return;
+        if (!IsOwner) 
+            return;
 
         MovePlayer();
 
@@ -64,7 +65,9 @@ public class BasicMovement : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsOwner) return;
+        if (!IsOwner) 
+            return;
+        
         MovePlayer();
     }
 
