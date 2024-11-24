@@ -49,6 +49,7 @@ public class LobbyManager : NetworkBehaviour
     {
         if (!IsServer)
             return;
+        
         int connectedClientsCount = NetworkManager.Singleton.ConnectedClients.Count;
         UpdateLobbyPlayersPrefabClientRpc(connectedClientsCount);
     }
@@ -58,6 +59,7 @@ public class LobbyManager : NetworkBehaviour
     {
         if (!IsClient)
             return;
+        
         for (int i = 0; i < LobbyPlayers.Count; i++)
         {
             LobbyPlayers[i].SetActive(i < connectedPlayersCount);
