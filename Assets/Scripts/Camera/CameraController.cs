@@ -46,7 +46,7 @@ public class CameraController : NetworkBehaviour
         transform.LookAt(targetTransform);
 
         Vector3 forwardDirection = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
-        targetTransform.rotation = Quaternion.Slerp(targetTransform.rotation, Quaternion.LookRotation(forwardDirection), Time.deltaTime);
+        targetTransform.rotation = Quaternion.LookRotation(forwardDirection);
     }
     
     private void LateUpdate()
