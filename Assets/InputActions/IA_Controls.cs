@@ -44,6 +44,15 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TurnAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c5f57b2-ebbf-4abb-965c-83b59e72cb04"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -123,6 +132,17 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e89e0c2-0366-4680-bce5-26d9a2e0e6f7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -139,6 +159,7 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
         m_PlayerControl = asset.FindActionMap("PlayerControl", throwIfNotFound: true);
         m_PlayerControl_Sprint = m_PlayerControl.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerControl_Camera = m_PlayerControl.FindAction("Camera", throwIfNotFound: true);
+        m_PlayerControl_TurnAbility = m_PlayerControl.FindAction("TurnAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -202,12 +223,14 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
     private List<IPlayerControlActions> m_PlayerControlActionsCallbackInterfaces = new List<IPlayerControlActions>();
     private readonly InputAction m_PlayerControl_Sprint;
     private readonly InputAction m_PlayerControl_Camera;
+    private readonly InputAction m_PlayerControl_TurnAbility;
     public struct PlayerControlActions
     {
         private @IA_Controls m_Wrapper;
         public PlayerControlActions(@IA_Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Sprint => m_Wrapper.m_PlayerControl_Sprint;
         public InputAction @Camera => m_Wrapper.m_PlayerControl_Camera;
+        public InputAction @TurnAbility => m_Wrapper.m_PlayerControl_TurnAbility;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -223,6 +246,9 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
             @Camera.started += instance.OnCamera;
             @Camera.performed += instance.OnCamera;
             @Camera.canceled += instance.OnCamera;
+            @TurnAbility.started += instance.OnTurnAbility;
+            @TurnAbility.performed += instance.OnTurnAbility;
+            @TurnAbility.canceled += instance.OnTurnAbility;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -233,6 +259,9 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
             @Camera.started -= instance.OnCamera;
             @Camera.performed -= instance.OnCamera;
             @Camera.canceled -= instance.OnCamera;
+            @TurnAbility.started -= instance.OnTurnAbility;
+            @TurnAbility.performed -= instance.OnTurnAbility;
+            @TurnAbility.canceled -= instance.OnTurnAbility;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -263,5 +292,6 @@ public partial class @IA_Controls: IInputActionCollection2, IDisposable
     {
         void OnSprint(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+        void OnTurnAbility(InputAction.CallbackContext context);
     }
 }

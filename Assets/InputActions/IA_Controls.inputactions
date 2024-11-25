@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TurnAbility",
+                    "type": "Button",
+                    "id": "1c5f57b2-ebbf-4abb-965c-83b59e72cb04",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -101,6 +110,17 @@
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3e89e0c2-0366-4680-bce5-26d9a2e0e6f7",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
