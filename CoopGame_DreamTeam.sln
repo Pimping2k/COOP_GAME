@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Parsers", "QFSW.QC.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Serializers", "QFSW.QC.Serializers.csproj", "{898ac6f7-108e-20e5-d7a9-fac4ba01ba06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{adcdd6d4-8ce3-5823-2b93-96e1554f0e11}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Editor", "QFSW.QC.Editor.csproj", "{834abd09-7e43-c899-c86e-d0c9d79ad743}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.QGUI", "QFSW.QC.QGUI.csproj", "{8de28a45-aaa6-85f7-e927-71ec8d3752a0}"
@@ -38,6 +40,8 @@ Global
 		{0d6aa5f7-537d-a69e-31e0-f31d0dfb9f32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898ac6f7-108e-20e5-d7a9-fac4ba01ba06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{898ac6f7-108e-20e5-d7a9-fac4ba01ba06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{adcdd6d4-8ce3-5823-2b93-96e1554f0e11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{adcdd6d4-8ce3-5823-2b93-96e1554f0e11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{834abd09-7e43-c899-c86e-d0c9d79ad743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{834abd09-7e43-c899-c86e-d0c9d79ad743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8de28a45-aaa6-85f7-e927-71ec8d3752a0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
