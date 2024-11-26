@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
@@ -93,6 +94,7 @@ public class SixthSenseAbilityComponent : NetworkBehaviour
             yield return null;
         }
 
+        GlobalVariablesContainer.IsAbilityActive = false;
         Turnoff();
     }
 
