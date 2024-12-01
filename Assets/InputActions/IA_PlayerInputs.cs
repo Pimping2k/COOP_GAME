@@ -35,6 +35,15 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GrabAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e66e6f9-cc28-42b0-9663-1ea67f62ac05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""TurnAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd483868-97d8-4df3-9d5c-93b38d3533dd"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
         // Input
         m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
         m_Input_TurnAbility = m_Input.FindAction("TurnAbility", throwIfNotFound: true);
+        m_Input_GrabAbility = m_Input.FindAction("GrabAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Input;
     private List<IInputActions> m_InputActionsCallbackInterfaces = new List<IInputActions>();
     private readonly InputAction m_Input_TurnAbility;
+    private readonly InputAction m_Input_GrabAbility;
     public struct InputActions
     {
         private @IA_PlayerInputs m_Wrapper;
         public InputActions(@IA_PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @TurnAbility => m_Wrapper.m_Input_TurnAbility;
+        public InputAction @GrabAbility => m_Wrapper.m_Input_GrabAbility;
         public InputActionMap Get() { return m_Wrapper.m_Input; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
             @TurnAbility.started += instance.OnTurnAbility;
             @TurnAbility.performed += instance.OnTurnAbility;
             @TurnAbility.canceled += instance.OnTurnAbility;
+            @GrabAbility.started += instance.OnGrabAbility;
+            @GrabAbility.performed += instance.OnGrabAbility;
+            @GrabAbility.canceled += instance.OnGrabAbility;
         }
 
         private void UnregisterCallbacks(IInputActions instance)
@@ -143,6 +169,9 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
             @TurnAbility.started -= instance.OnTurnAbility;
             @TurnAbility.performed -= instance.OnTurnAbility;
             @TurnAbility.canceled -= instance.OnTurnAbility;
+            @GrabAbility.started -= instance.OnGrabAbility;
+            @GrabAbility.performed -= instance.OnGrabAbility;
+            @GrabAbility.canceled -= instance.OnGrabAbility;
         }
 
         public void RemoveCallbacks(IInputActions instance)
@@ -163,5 +192,6 @@ public partial class @IA_PlayerInputs: IInputActionCollection2, IDisposable
     public interface IInputActions
     {
         void OnTurnAbility(InputAction.CallbackContext context);
+        void OnGrabAbility(InputAction.CallbackContext context);
     }
 }
